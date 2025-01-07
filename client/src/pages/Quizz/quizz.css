@@ -1,0 +1,9 @@
+.containerAnswer img {
+  height: 5vh;
+}
+
+.containerAnswer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
