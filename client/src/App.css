@@ -2,4 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  /* background: rgb(125, 207, 182); */
+  background: linear-gradient(
+    180deg,
+    rgba(125, 207, 182, 1) 0%,
+    rgba(236, 228, 183, 1) 33%,
+    rgba(243, 220, 174, 1) 66%,
+    rgba(252, 159, 91, 1) 100%
+  );
+  background-attachment: fixed;
 }
