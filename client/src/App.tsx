@@ -8,7 +8,9 @@ export default function App() {
     <>
       <h1>Projet 2</h1>
       <Nav />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
