@@ -1,7 +1,9 @@
+import ShowQuestion from "../../components/ShowQuestion";
 export default function Quizz() {
   return (
     <>
-      <h1>Quizz</h1>
+      <h2>Thème</h2> {/* Recuper en props le thème choisit */}
+      <ShowQuestion />
     </>
   );
 }
