@@ -5,11 +5,13 @@ import Nav from "./components/Nav/Nav";
 
 export default function App() {
   return (
-    <main>
+    <>
       <h1>Projet 2</h1>
       <Nav />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
