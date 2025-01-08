@@ -11,7 +11,6 @@ import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
 // import Quizz from "./pages/Quizz/Quizz"; inutile ?
 import Rules from "./pages/Rules/Rules";
-import Theme from "./components/Theme/Theme";
 
 //CSS import
 import "./App.css";
@@ -40,7 +39,6 @@ const router = createBrowserRouter([
       { path: "/Contact", element: <Contact /> },
       // { path: "/Quizz/Theme/Drapeau", element: <Drapeau /> },
       { path: "/Rules", element: <Rules /> },
-      { path: "/Theme", element: <Theme /> },
     ],
   },
   // Try adding a new route! For example, "/about" with an About component
