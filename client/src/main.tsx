@@ -9,7 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
-import Quizz from "./pages/Quizz/Quizz";
+// import Quizz from "./pages/Quizz/Quizz"; inutile ?
 import Rules from "./pages/Rules/Rules";
 
 //CSS import
@@ -18,8 +18,10 @@ import "./pages/Contact/contact.css";
 import "./pages/Home/home.css";
 import "./pages/Quizz/quizz.css";
 import "./pages/Rules/rules.css";
+import "./components/Theme/theme.css";
 
 // Import additional components for new routes
+
 // Try creating these components in the "pages" folder
 
 // import About from "./pages/About";
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/Contact", element: <Contact /> },
-      { path: "/Quizz", element: <Quizz /> },
+      // { path: "/Quizz/Theme/Drapeau", element: <Drapeau /> },
       { path: "/Rules", element: <Rules /> },
     ],
   },
