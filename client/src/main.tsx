@@ -19,6 +19,8 @@ import "./pages/Home/home.css";
 import "./pages/Quizz/quizz.css";
 import "./pages/Rules/rules.css";
 import "./components/Theme/theme.css";
+import "./components/Footer/footer.css";
+import "./components/Nav/nav.css";
 
 // Import additional components for new routes
 

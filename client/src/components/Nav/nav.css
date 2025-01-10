@@ -3,21 +3,21 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 nav > img {
-  height: 15vh;
+  height: 5rem;
 }
 
 nav > ul {
   display: flex;
   flex-direction: row;
-  gap: 5rem;
-  font-size: xx-large;
+  gap: 2rem;
+  font-size: 1rem;
   list-style: none;
+  padding-right: 2rem;
 }
 
 nav > ul > li > a {
@@ -29,4 +29,19 @@ nav > ul > li > a:hover {
   background: #f1f1f1;
   padding: 0.3rem 0.8rem;
   border-radius: 1rem;
+}
+
+@media only screen and (min-width: 920px) {
+  nav {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  nav > ul {
+    font-size: 1.5rem;
+  }
+
+  nav > img {
+    height: 6rem;
+  }
 }

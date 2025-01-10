@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <h1>Footer</h1>
+      <p className="footer">© 2025 WCS. Tous droits réservés.</p>
     </>
   );
 }
