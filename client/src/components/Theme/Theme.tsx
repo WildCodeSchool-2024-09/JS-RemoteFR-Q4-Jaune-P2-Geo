@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Theme() {
   return (
     <>
@@ -8,33 +10,33 @@ export default function Theme() {
 
         {/* Les 4 bouttons thèmes */}
         <div className="containers-themes">
-          <button type="button" className="button-Capitales">
+          <Link to="/capitals" className="link-Capitals">
             <img
               src={"/public/images/Capitales.png"}
               alt="Un boutton nuage où se trouve un texte Capitales"
             />
-          </button>
+          </Link>
 
-          <button type="button" className="button-Drapeau">
+          <Link to="/flags" className="link-Flags">
             <img
               src={"/public/images/drapeaux.png"}
               alt="Un boutton nuage où se trouve un texte Drapeau"
             />
-          </button>
+          </Link>
 
-          <button type="button" className="button-Monnaies">
+          <Link to="/money" className="link-Money">
             <img
               src={"/public/images/Monnaies.png"}
               alt="Un boutton nuage où se trouve un texte Monnaies"
             />
-          </button>
+          </Link>
 
-          <button type="button" className="button-Langues">
+          <Link to="/langages" className="link-Langages">
             <img
               src={"/public/images/Langues.png"}
               alt="Un boutton nuage où se trouve un texte Langues"
             />
-          </button>
+          </Link>
         </div>
       </div>
     </>

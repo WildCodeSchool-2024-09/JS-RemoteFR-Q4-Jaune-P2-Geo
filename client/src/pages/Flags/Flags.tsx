@@ -10,7 +10,7 @@ interface CountriesType {
   };
 }
 
-export default function Quizz() {
+export default function Flags() {
   const [countries, setCountries] = useState([] as CountriesType[]);
   const [isLoading, setIsLoading] = useState(true);
 
