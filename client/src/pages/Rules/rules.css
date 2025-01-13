@@ -1,0 +1,9 @@
+.rules {
+  border: 2px dashed red;
+}
+
+.theme_rules {
+  border: 2px dashed green;
+  display: flex;
+  flex-direction: row;
+}

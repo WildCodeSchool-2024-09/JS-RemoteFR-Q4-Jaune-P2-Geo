@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 2rem;
-  margin-top: 24rem;
+  margin-top: 2rem;
 }
 
 .containers-themes {
@@ -18,30 +18,24 @@
   background: none;
   cursor: pointer;
   flex-direction: row;
-  max-width: 80%;
+  max-width: 75%;
 }
 
 @media only screen and (min-width: 920px) {
   .theme {
     display: flex;
     flex-direction: column;
-    max-width: 45%;
-    margin-left: 4rem;
+    justify-content: center;
+    max-width: 25%;
   }
-  .title-themes {
-    display: flex;
-    justify-content: flex-start;
+  .title > b {
+    font-size: 1.4rem;
     margin-top: 2rem;
   }
 
   .containers-themes {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
     max-width: 25%;
-  }
-
-  .containers-themes > button {
+    display: flex;
     flex-direction: column;
   }
 }

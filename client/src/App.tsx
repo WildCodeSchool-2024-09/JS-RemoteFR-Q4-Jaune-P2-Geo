@@ -5,7 +5,6 @@ import Nav from "./components/Nav/Nav";
 export default function App() {
   return (
     <>
-      <h1>Projet 2</h1>
       <Nav />
       <main>
         <Outlet />
