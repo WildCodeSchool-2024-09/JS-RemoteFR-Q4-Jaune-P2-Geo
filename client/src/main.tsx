@@ -7,16 +7,19 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component/pages
 import App from "./App";
+import Capitals from "./pages/Capitals/Capitals";
 import Contact from "./pages/Contact/Contact";
+import Flags from "./pages/Flags/Flags";
 import Home from "./pages/Home/Home";
-// import Quizz from "./pages/Quizz/Quizz"; inutile ?
+import Langages from "./pages/Langages/Langages";
+import Money from "./pages/Money/Money";
 import Rules from "./pages/Rules/Rules";
 
 //CSS import
 import "./App.css";
 import "./pages/Contact/contact.css";
 import "./pages/Home/home.css";
-import "./pages/Quizz/quizz.css";
+import "./pages/Flags/flags.css";
 import "./pages/Rules/rules.css";
 import "./components/Theme/theme.css";
 import "./components/Footer/footer.css";
@@ -39,8 +42,11 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
     children: [
       { path: "/", element: <Home /> },
+      { path: "/Capitals", element: <Capitals /> },
       { path: "/Contact", element: <Contact /> },
-      // { path: "/Quizz/Theme/Drapeau", element: <Drapeau /> },
+      { path: "/Flags", element: <Flags /> },
+      { path: "/Langages", element: <Langages /> },
+      { path: "/Money", element: <Money /> },
       { path: "/Rules", element: <Rules /> },
     ],
   },

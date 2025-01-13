@@ -11,7 +11,7 @@
   flex-wrap: wrap;
 }
 
-.containers-themes > button {
+.containers-themes > Link {
   border: none;
   padding: 0;
   margin: 0 auto;
