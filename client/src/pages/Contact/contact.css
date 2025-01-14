@@ -1,0 +1,10 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+}
