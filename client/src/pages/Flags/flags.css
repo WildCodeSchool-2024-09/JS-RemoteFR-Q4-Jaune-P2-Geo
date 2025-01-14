@@ -7,3 +7,26 @@
   flex-direction: row;
   gap: 2rem;
 }
+
+button {
+  display: block;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+p {
+  margin: 2rem;
+}
+
+.flags-container {
+  display: flex; /* Utiliser flexbox */
+  justify-content: center; /* Centrer les images horizontalement */
+  gap: 5rem; /* Espacement entre les images */
+}
+
+.flags {
+  width: 25rem; /* Vous pouvez ajuster la taille des drapeaux */
+  height: auto; /* Garder les proportions des images */
+}
