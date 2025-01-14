@@ -13,10 +13,9 @@ interface CountriesType {
 export default function Flags() {
   const [countries, setCountries] = useState([] as CountriesType[]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0 as number); // Suivi de la question actuelle
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
-  // const [goodAnswer, setGoodAnswer] = useState<number>(0); // Index de la bonne réponse
+  const [questionCount, setQuestionCount] = useState(0);
 
   useEffect(() => {
     axios
@@ -46,9 +45,7 @@ export default function Flags() {
 
     setNbsRandom(randomAnswers); // Met à jour les réponses possibles
     setGoodAnswer(correctAnswer); // Met à jour la bonne réponse
-    //   setCurrentQuestionIndex(
-    //     (prevIndex: number) => (prevIndex + 1) % countries.length,
-    //   ); // Passe à la question suivante (en boucle)
+    setQuestionCount((prevCount) => prevCount + 1);
   };
 
   if (isLoading) {
@@ -59,10 +56,12 @@ export default function Flags() {
   if (countries.length && nbsRandom.length === 0) {
     handleNextQuestion(); // Générer la première question dès le chargement
   }
-
+  if (questionCount >= 11) {
+    return <h2>Finito pipo - mettre le resultat</h2>;
+  }
   return (
     <>
-      <h2>Thème</h2>
+      <h2>Thème - question {questionCount}</h2>
       <h3>Quel est le drapeau de {countries[goodAnswer].name.common} ?</h3>
       <p>Bonne réponse : </p>
       <img
