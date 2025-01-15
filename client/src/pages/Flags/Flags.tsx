@@ -17,6 +17,7 @@ export default function Flags() {
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
   const [questionCount, setQuestionCount] = useState(0);
   const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     axios
@@ -52,6 +53,13 @@ export default function Flags() {
   const handleChoiseAnswer = (countryIndex: number) => {
     console.info("rep choisi : ", { countryIndex });
     setUserChoiceIndex(countryIndex);
+    //si réponse selectionner -> bonne
+    // alors -> score += 1 else score +=0
+    if (
+      countries[countryIndex].name.common === countries[goodAnswer].name.common
+    ) {
+      setScore((prevScore) => prevScore + 1);
+    }
   };
 
   if (isLoading) {
@@ -63,7 +71,7 @@ export default function Flags() {
     handleNextQuestion(); // Générer la première question dès le chargement
   }
   if (questionCount >= 11) {
-    return <h2>Finito pipo - mettre le resultat</h2>;
+    return <h2>Finito pipo - {score}/10</h2>;
   }
   return (
     <>
@@ -102,6 +110,10 @@ export default function Flags() {
       <button type="button" onClick={handleNextQuestion}>
         Question suivante
       </button>
+      <div>
+        <h2>Quiz Terminé !</h2>
+        <p>Votre score final est de {score} / 10.</p>
+      </div>
     </>
   );
 }
