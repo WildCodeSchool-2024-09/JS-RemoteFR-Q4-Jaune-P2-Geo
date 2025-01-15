@@ -55,6 +55,7 @@ export default function Flags() {
     setUserChoiceIndex(countryIndex);
     //si réponse selectionner -> bonne
     // alors -> score += 1 else score +=0
+
     if (
       countries[countryIndex].name.common === countries[goodAnswer].name.common
     ) {
@@ -71,8 +72,29 @@ export default function Flags() {
     handleNextQuestion(); // Générer la première question dès le chargement
   }
   if (questionCount >= 11) {
-    return <h2>Finito pipo - {score}/10</h2>;
+    if (score === 10)
+      return <h2>{score}/10 - Félicitations un vrai globe-trotters !</h2>;
+    if (score === 9 || score === 8)
+      return <h2>{score}/10 - Un petit effort et tu seras au top !</h2>;
+    if (score === 7 || score === 6)
+      return <h2>{score}/10 - Continue à explorer !</h2>;
+    if (score === 5 || score === 4)
+      return (
+        <h2>
+          {score}/10 - Tu es sur la bonne voie mais il reste encore beaucoup à
+          découvrir !
+        </h2>
+      );
+    if (score === 3 || score === 2)
+      return (
+        <h2>
+          {score}/10 - Ce n'est qu'un début, mais il te reste encore du chemin à
+          parcourir !
+        </h2>
+      );
+    return <h2>{score}/10 - Tu as encore du chemin à faire !</h2>;
   }
+
   return (
     <>
       <h2>Thème - question {questionCount}</h2>
