@@ -16,6 +16,7 @@ export default function Flags() {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
   const [questionCount, setQuestionCount] = useState(0);
+  const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
 
   useEffect(() => {
     axios
@@ -48,6 +49,11 @@ export default function Flags() {
     setQuestionCount((prevCount) => prevCount + 1);
   };
 
+  const handleChoiseAnswer = (countryIndex: number) => {
+    console.info("rep choisi : ", { countryIndex });
+    setUserChoiceIndex(countryIndex);
+  };
+
   if (isLoading) {
     return <h3>Chargement...</h3>;
   }
@@ -71,14 +77,28 @@ export default function Flags() {
       <p>Réponses possibles : </p>
       <div className="flags-container">
         {nbsRandom.map((index) => (
-          <img
-            className="flags"
+          <button
             key={index}
-            src={countries[index].flags.png}
-            alt={`Drapeau ${countries[index].name.common}`}
-          />
+            type="button"
+            onClick={() => handleChoiseAnswer(index)}
+          >
+            <img
+              className="flags"
+              key={index}
+              src={countries[index].flags.png}
+              alt={`Drapeau ${countries[index].name.common}`}
+            />
+          </button>
         ))}
       </div>
+      <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
+      <p>
+        {" "}
+        {countries[userChoiceIndex].name.common ===
+        countries[goodAnswer].name.common
+          ? "gg"
+          : "pas gg"}
+      </p>
       <button type="button" onClick={handleNextQuestion}>
         Question suivante
       </button>
