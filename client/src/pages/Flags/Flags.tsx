@@ -34,11 +34,16 @@ export default function Flags() {
       });
   }, []);
 
-  // Fonction pour générer des indices de pays aléatoires
+  // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
   const generateAnswer = () => {
-    return Array.from({ length: 3 }, () =>
-      Math.floor(Math.random() * countries.length),
-    );
+    const arrayNbs = [] as number[];
+    while (arrayNbs.length < 3) {
+      const num = Math.floor(Math.random() * countries.length);
+      if (!arrayNbs.includes(num)) {
+        arrayNbs.push(num);
+      }
+    }
+    return arrayNbs;
   };
 
   // Fonction pour générer une nouvelle question avec de nouvelles réponses aléatoires
