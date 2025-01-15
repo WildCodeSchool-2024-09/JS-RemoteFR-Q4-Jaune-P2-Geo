@@ -17,6 +17,8 @@ export default function Flags() {
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
   const [questionCount, setQuestionCount] = useState(0);
   const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isValidate, setIsValidate] = useState(false);
 
   useEffect(() => {
     axios
@@ -47,11 +49,22 @@ export default function Flags() {
     setNbsRandom(randomAnswers); // Met à jour les réponses possibles
     setGoodAnswer(correctAnswer); // Met à jour la bonne réponse
     setQuestionCount((prevCount) => prevCount + 1);
+    closeDialog();
   };
 
   const handleChoiseAnswer = (countryIndex: number) => {
-    console.info("rep choisi : ", { countryIndex });
     setUserChoiceIndex(countryIndex);
+    setDialogOpen(true);
+
+    if (countryIndex === goodAnswer) {
+      setIsValidate(true);
+    } else {
+      setIsValidate(false);
+    }
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
   };
 
   if (isLoading) {
@@ -60,9 +73,9 @@ export default function Flags() {
 
   // Si les pays sont chargés, générer la première question
   if (countries.length && nbsRandom.length === 0) {
-    handleNextQuestion(); // Générer la première question dès le chargement
+    handleNextQuestion();
   }
-  if (questionCount >= 11) {
+  if (questionCount > 10) {
     return <h2>Finito pipo - mettre le resultat</h2>;
   }
   return (
@@ -91,17 +104,19 @@ export default function Flags() {
           </button>
         ))}
       </div>
-      <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
-      <p>
-        {" "}
-        {countries[userChoiceIndex].name.common ===
-        countries[goodAnswer].name.common
-          ? "gg"
-          : "pas gg"}
-      </p>
-      <button type="button" onClick={handleNextQuestion}>
-        Question suivante
-      </button>
+
+      <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
+        <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
+        <p>
+          {countries[userChoiceIndex].name.common ===
+          countries[goodAnswer].name.common
+            ? "Bien joué ! "
+            : `Dommage, la réponse était ${countries[goodAnswer].name.common} `}
+        </p>
+        <button type="button" onClick={handleNextQuestion}>
+          Question suivante
+        </button>
+      </dialog>
     </>
   );
 }
