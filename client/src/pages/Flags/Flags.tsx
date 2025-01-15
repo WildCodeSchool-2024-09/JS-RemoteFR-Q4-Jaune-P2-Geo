@@ -13,10 +13,10 @@ interface CountriesType {
 export default function Flags() {
   const [countries, setCountries] = useState([] as CountriesType[]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0 as number); // Suivi de la question actuelle
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
-  // const [goodAnswer, setGoodAnswer] = useState<number>(0); // Index de la bonne réponse
+  const [questionCount, setQuestionCount] = useState(0);
+  const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
 
   useEffect(() => {
     axios
@@ -46,9 +46,12 @@ export default function Flags() {
 
     setNbsRandom(randomAnswers); // Met à jour les réponses possibles
     setGoodAnswer(correctAnswer); // Met à jour la bonne réponse
-    //   setCurrentQuestionIndex(
-    //     (prevIndex: number) => (prevIndex + 1) % countries.length,
-    //   ); // Passe à la question suivante (en boucle)
+    setQuestionCount((prevCount) => prevCount + 1);
+  };
+
+  const handleChoiseAnswer = (countryIndex: number) => {
+    console.info("rep choisi : ", { countryIndex });
+    setUserChoiceIndex(countryIndex);
   };
 
   if (isLoading) {
@@ -59,10 +62,12 @@ export default function Flags() {
   if (countries.length && nbsRandom.length === 0) {
     handleNextQuestion(); // Générer la première question dès le chargement
   }
-
+  if (questionCount >= 11) {
+    return <h2>Finito pipo - mettre le resultat</h2>;
+  }
   return (
     <>
-      <h2>Thème</h2>
+      <h2>Thème - question {questionCount}</h2>
       <h3>Quel est le drapeau de {countries[goodAnswer].name.common} ?</h3>
       <p>Bonne réponse : </p>
       <img
@@ -72,14 +77,28 @@ export default function Flags() {
       <p>Réponses possibles : </p>
       <div className="flags-container">
         {nbsRandom.map((index) => (
-          <img
-            className="flags"
+          <button
             key={index}
-            src={countries[index].flags.png}
-            alt={`Drapeau ${countries[index].name.common}`}
-          />
+            type="button"
+            onClick={() => handleChoiseAnswer(index)}
+          >
+            <img
+              className="flags"
+              key={index}
+              src={countries[index].flags.png}
+              alt={`Drapeau ${countries[index].name.common}`}
+            />
+          </button>
         ))}
       </div>
+      <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
+      <p>
+        {" "}
+        {countries[userChoiceIndex].name.common ===
+        countries[goodAnswer].name.common
+          ? "gg"
+          : "pas gg"}
+      </p>
       <button type="button" onClick={handleNextQuestion}>
         Question suivante
       </button>
