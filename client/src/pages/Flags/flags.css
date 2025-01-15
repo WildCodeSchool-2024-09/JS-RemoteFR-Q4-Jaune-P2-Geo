@@ -1,5 +1,5 @@
 .containerAnswer img {
-  height: 5vh;
+  height: 3vh;
 }
 
 .containerAnswer {
@@ -14,6 +14,7 @@ button {
   padding: 1rem;
   border-radius: 1rem;
   cursor: pointer;
+  border: none;
 }
 
 p {
@@ -29,4 +30,31 @@ p {
 .flags {
   width: 25rem; /* Vous pouvez ajuster la taille des drapeaux */
   height: auto; /* Garder les proportions des images */
+}
+
+dialog {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgb(82, 82, 82);
+  min-width: 40vw;
+  margin: 5rem auto;
+  & p {
+    background: white;
+  }
+}
+
+.good {
+  border: 8px solid var(--color-green);
+
+  & button {
+    background: var(--color-green);
+    border: none;
+  }
+}
+
+.notGood {
+  border: 8px solid var(--color-orange);
+  & button {
+    background: var(--color-orange);
+  }
 }

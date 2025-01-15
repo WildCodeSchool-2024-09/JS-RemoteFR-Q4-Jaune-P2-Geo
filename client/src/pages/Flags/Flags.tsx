@@ -17,6 +17,8 @@ export default function Flags() {
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
   const [questionCount, setQuestionCount] = useState(0);
   const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isValidate, setIsValidate] = useState(false);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
@@ -48,13 +50,18 @@ export default function Flags() {
     setNbsRandom(randomAnswers); // Met à jour les réponses possibles
     setGoodAnswer(correctAnswer); // Met à jour la bonne réponse
     setQuestionCount((prevCount) => prevCount + 1);
+    closeDialog();
   };
 
   const handleChoiseAnswer = (countryIndex: number) => {
-    console.info("rep choisi : ", { countryIndex });
     setUserChoiceIndex(countryIndex);
-    //si réponse selectionner -> bonne
-    // alors -> score += 1 else score +=0
+    setDialogOpen(true);
+
+    if (countryIndex === goodAnswer) {
+      setIsValidate(true);
+    } else {
+      setIsValidate(false);
+    }
 
     if (
       countries[countryIndex].name.common === countries[goodAnswer].name.common
@@ -63,14 +70,19 @@ export default function Flags() {
     }
   };
 
+  const closeDialog = () => {
+    setDialogOpen(false);
+  };
+
   if (isLoading) {
     return <h3>Chargement...</h3>;
   }
 
   // Si les pays sont chargés, générer la première question
   if (countries.length && nbsRandom.length === 0) {
-    handleNextQuestion(); // Générer la première question dès le chargement
+    handleNextQuestion();
   }
+
   if (questionCount >= 11) {
     if (score === 10)
       return <h2>{score}/10 - Félicitations un vrai globe-trotters !</h2>;
@@ -121,20 +133,22 @@ export default function Flags() {
           </button>
         ))}
       </div>
-      <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
-      <p>
-        {" "}
-        {countries[userChoiceIndex].name.common ===
-        countries[goodAnswer].name.common
-          ? "gg"
-          : "pas gg"}
-      </p>
-      <button type="button" onClick={handleNextQuestion}>
-        Question suivante
-      </button>
+
+      <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
+        <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
+        <p>
+          {countries[userChoiceIndex].name.common ===
+          countries[goodAnswer].name.common
+            ? "Bien joué ! "
+            : `Dommage, la réponse était ${countries[goodAnswer].name.common} `}
+        </p>
+        <button type="button" onClick={handleNextQuestion}>
+          Question suivante
+        </button>
+      </dialog>
+
       <div>
-        <h2>Quiz Terminé !</h2>
-        <p>Votre score final est de {score} / 10.</p>
+        <p>Votre score : {score} / 10.</p>
       </div>
     </>
   );
