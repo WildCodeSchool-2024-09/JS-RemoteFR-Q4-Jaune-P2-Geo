@@ -1,18 +1,35 @@
-.containerAnswer img {
-  height: 3vh;
+.imgTheme {
+  background: red;
 }
 
-.containerAnswer {
+.conteneurTheme {
+  margin: 0 auto;
+  border: 1 solid white;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 80vw;
+  background: var(--color-BG-layout);
+  box-shadow: 0px 2px 2px rgb(82, 82, 82);
+}
+
+.flags-container {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+button .flags {
+  max-width: 22vw;
+  border-radius: 8px;
 }
 
 button {
+  /* width: 10vw; */
   display: block;
   margin: 2rem auto;
   padding: 1rem;
-  border-radius: 1rem;
+  font-family: "Love Ya Like A Sister", serif;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
   border: none;
 }
@@ -21,26 +38,12 @@ p {
   margin: 2rem;
 }
 
-.flags-container {
-  display: flex; /* Utiliser flexbox */
-  justify-content: center; /* Centrer les images horizontalement */
-  gap: 5rem; /* Espacement entre les images */
-}
-
-.flags {
-  width: 25rem; /* Vous pouvez ajuster la taille des drapeaux */
-  height: auto; /* Garder les proportions des images */
-}
-
 dialog {
-  background: white;
+  background: var(--color-BG-layout);
   border-radius: 8px;
   box-shadow: 0px 2px 2px rgb(82, 82, 82);
-  min-width: 40vw;
+  width: 80vw;
   margin: 5rem auto;
-  & p {
-    background: white;
-  }
 }
 
 .good {

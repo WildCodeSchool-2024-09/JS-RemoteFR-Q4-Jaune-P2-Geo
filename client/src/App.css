@@ -2,6 +2,8 @@
 :root {
   --color-green: #7dcfb6;
   --color-orange: #fc9f5b;
+  --color-BG-layout: rgba(255, 255, 255, 0.8);
+
   font-family: "Love Ya Like A Sister", serif;
   color: #0c120c;
 }
@@ -11,6 +13,9 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+}
+
+body {
   background: linear-gradient(
     180deg,
     rgba(125, 207, 182, 1) 0%,
