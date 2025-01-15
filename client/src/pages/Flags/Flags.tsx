@@ -19,6 +19,7 @@ export default function Flags() {
   const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isValidate, setIsValidate] = useState(false);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     axios
@@ -61,6 +62,12 @@ export default function Flags() {
     } else {
       setIsValidate(false);
     }
+
+    if (
+      countries[countryIndex].name.common === countries[goodAnswer].name.common
+    ) {
+      setScore((prevScore) => prevScore + 1);
+    }
   };
 
   const closeDialog = () => {
@@ -75,9 +82,31 @@ export default function Flags() {
   if (countries.length && nbsRandom.length === 0) {
     handleNextQuestion();
   }
-  if (questionCount > 10) {
-    return <h2>Finito pipo - mettre le resultat</h2>;
+
+  if (questionCount >= 11) {
+    if (score === 10)
+      return <h2>{score}/10 - Félicitations un vrai globe-trotters !</h2>;
+    if (score === 9 || score === 8)
+      return <h2>{score}/10 - Un petit effort et tu seras au top !</h2>;
+    if (score === 7 || score === 6)
+      return <h2>{score}/10 - Continue à explorer !</h2>;
+    if (score === 5 || score === 4)
+      return (
+        <h2>
+          {score}/10 - Tu es sur la bonne voie mais il reste encore beaucoup à
+          découvrir !
+        </h2>
+      );
+    if (score === 3 || score === 2)
+      return (
+        <h2>
+          {score}/10 - Ce n'est qu'un début, mais il te reste encore du chemin à
+          parcourir !
+        </h2>
+      );
+    return <h2>{score}/10 - Tu as encore du chemin à faire !</h2>;
   }
+
   return (
     <>
       <h2>Thème - question {questionCount}</h2>
@@ -117,6 +146,10 @@ export default function Flags() {
           Question suivante
         </button>
       </dialog>
+
+      <div>
+        <p>Votre score : {score} / 10.</p>
+      </div>
     </>
   );
 }
