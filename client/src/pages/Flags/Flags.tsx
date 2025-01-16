@@ -114,23 +114,21 @@ export default function Flags() {
 
   return (
     <>
-      <img
-        className="imgTheme"
-        src={"/public/images/drapeaux.png"}
-        alt="Un boutton nuage où se trouve un texte Drapeau"
-      />
+      <div className="conteneurTitleScore">
+        <img
+          className="imgTheme"
+          src={"/public/images/drapeaux.png"}
+          alt="Un boutton nuage où se trouve un texte Drapeau"
+        />
+        <p className="score"> {score} / 10</p>
+      </div>
+
       <div className="conteneurTheme">
         <h2>
-          {" "}
           {questionCount} - Quel est le drapeau de{" "}
           {countries[goodAnswer].name.common} ?
         </h2>
-        {/* <p>Bonne réponse : </p>
-      <img
-        src={countries[goodAnswer].flags.png}
-        alt={`Drapeau de ${countries[goodAnswer].name.common}`}
-      /> */}
-        <p>Réponses possibles : </p>
+
         <div className="flags-container">
           {nbsRandom.map((index) => (
             <button
@@ -160,10 +158,6 @@ export default function Flags() {
             Question suivante
           </button>
         </dialog>
-
-        <div>
-          <p>Votre score : {score} / 10.</p>
-        </div>
       </div>
     </>
   );
