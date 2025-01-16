@@ -93,23 +93,33 @@ export default function Flags() {
     handleNextQuestion();
   }
 
-  if (questionCount >= 10) {
-    return (
-      <h2>
-        {score}/10 -{" "}
-        {score === 10
-          ? "Félicitations un vrai globe-trotters !"
-          : score >= 8
-            ? "Un petit effort et tu seras au top !"
-            : score >= 6
-              ? "Continue à explorer !"
-              : score >= 4
-                ? "Tu es sur la bonne voie mais il reste encore beaucoup à découvrir !"
-                : score >= 2
-                  ? "Ce n'est qu'un début, mais il te reste encore du chemin à parcourir !"
-                  : "Tu as encore du chemin à faire !"}
-      </h2>
-    );
+  if (questionCount === 11) {
+    if (score === 10) {
+      return <h2>{score}/10 - Félicitations un vrai globe-trotters !</h2>;
+    }
+    if (score >= 8) {
+      return <h2>{score}/10 - Un petit effort et tu seras au top !</h2>;
+    }
+    if (score >= 6) {
+      return <h2>{score}/10 - Continue à explorer !</h2>;
+    }
+    if (score >= 4) {
+      return (
+        <h2>
+          {score}/10 - Tu es sur la bonne voie mais il reste encore beaucoup à
+          découvrir !
+        </h2>
+      );
+    }
+    if (score >= 2) {
+      return (
+        <h2>
+          {score}/10 - Ce n'est qu'un début, mais il te reste encore du chemin à
+          parcourir !
+        </h2>
+      );
+    }
+    return <h2>{score}/10 - Tu as encore du chemin à faire !</h2>;
   }
 
   return (
