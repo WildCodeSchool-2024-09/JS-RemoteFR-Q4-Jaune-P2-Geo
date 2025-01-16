@@ -157,13 +157,18 @@ export default function Flags() {
         </div>
 
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
+          <p> Réponse choisit : {countries[userChoiceIndex].name.common} </p>
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common
-              ? "Bien joué ! "
-              : `Dommage, la réponse était ${countries[goodAnswer].name.common} `}
+              ? "Bien joué ! C'était bien ce drapeau :"
+              : "Dommage, c'était ce drapeau :"}
           </p>
+          <img
+            className="flagAnswer"
+            src={countries[goodAnswer].flags.png}
+            alt={`Drapeau de ${countries[goodAnswer].name.common} `}
+          />
           <button type="button" onClick={handleNextQuestion}>
             Question suivante
           </button>
