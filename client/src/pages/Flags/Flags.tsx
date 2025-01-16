@@ -124,47 +124,50 @@ export default function Flags() {
 
   return (
     <>
-      <h2>Thème - question {questionCount}</h2>
-      <h3>Quel est le drapeau de {countries[goodAnswer].name.common} ?</h3>
-      <p>Bonne réponse : </p>
-      <img
-        src={countries[goodAnswer].flags.png}
-        alt={`Drapeau de ${countries[goodAnswer].name.common}`}
-      />
-      <p>Réponses possibles : </p>
-      <div className="flags-container">
-        {nbsRandom.map((index) => (
-          <button
-            key={index}
-            type="button"
-            onClick={() => handleChoiseAnswer(index)}
-            disabled={isAnswerSelected}
-          >
-            <img
-              className="flags"
-              key={index}
-              src={countries[index].flags.png}
-              alt={`Drapeau ${countries[index].name.common}`}
-            />
-          </button>
-        ))}
+      <div className="conteneurTitleScore">
+        <img
+          className="imgTheme"
+          src={"/public/images/drapeaux.png"}
+          alt="Un boutton nuage où se trouve un texte Drapeau"
+        />
+        <p className="score"> {score} / 10</p>
       </div>
 
-      <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-        <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
-        <p>
-          {countries[userChoiceIndex].name.common ===
-          countries[goodAnswer].name.common
-            ? "Bien joué ! "
-            : `Dommage, la réponse était ${countries[goodAnswer].name.common} `}
-        </p>
-        <button type="button" onClick={handleNextQuestion}>
-          Question suivante
-        </button>
-      </dialog>
+      <div className="conteneurTheme">
+        <h2>
+          {questionCount} - Quel est le drapeau de{" "}
+          {countries[goodAnswer].name.common} ?
+        </h2>
 
-      <div>
-        <p>Votre score : {score} / 10.</p>
+        <div className="flags-container">
+          {nbsRandom.map((index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => handleChoiseAnswer(index)}
+            >
+              <img
+                className="flags"
+                key={index}
+                src={countries[index].flags.png}
+                alt={`Drapeau ${countries[index].name.common}`}
+              />
+            </button>
+          ))}
+        </div>
+
+        <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
+          <p> reponse choisit : {countries[userChoiceIndex].name.common} </p>
+          <p>
+            {countries[userChoiceIndex].name.common ===
+            countries[goodAnswer].name.common
+              ? "Bien joué ! "
+              : `Dommage, la réponse était ${countries[goodAnswer].name.common} `}
+          </p>
+          <button type="button" onClick={handleNextQuestion}>
+            Question suivante
+          </button>
+        </dialog>
       </div>
     </>
   );
