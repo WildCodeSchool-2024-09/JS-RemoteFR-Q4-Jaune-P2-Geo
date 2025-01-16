@@ -1,10 +1,65 @@
 h1 {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 50%;
+  left: 31%;
+  padding: 5rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
   max-width: 75%;
+}
+
+label {
+  padding: 1rem;
+}
+
+input {
+  display: flex;
+  width: 25rem;
+  height: 4rem;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem;
+  left: 50%;
+  width: 50%;
+  position: relative;
+}
+
+main > button {
+  display: flex;
+  position: relative;
+  left: 6%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: rgb(22, 21, 21);
+  background-color: #007bff;
+  border: 2px solid #333;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+button {
+  display: flex;
+  border: #333;
+  background-color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.98);
 }
