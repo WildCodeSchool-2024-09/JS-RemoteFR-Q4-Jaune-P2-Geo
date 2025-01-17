@@ -1,10 +1,10 @@
-import Theme from "../../components/Theme/Theme";
+// import Theme from "../../components/Theme/Theme";
 
 export default function Rules() {
   return (
     <>
       <div className="theme_rules">
-        <Theme />
+        {/* <Theme /> */}
         <div className="rules">
           <h1>Rules</h1>
 

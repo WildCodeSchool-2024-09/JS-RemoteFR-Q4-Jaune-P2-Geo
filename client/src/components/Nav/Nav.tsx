@@ -9,7 +9,7 @@ export default function Nav() {
       />
       <ul>
         <li>
-          <Link to="/">Accueil</Link>
+          <Link to="/"> Accueil </Link>
         </li>
         <li>
           <Link to="/Rules">Règles</Link>
