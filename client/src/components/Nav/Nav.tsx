@@ -1,6 +1,33 @@
 import { Link } from "react-router-dom";
 
 export default function Nav() {
+  // const [gameMode, setGameMode] = useState("");
+
+  // const changeMode = () => {
+  //   // useEffect
+  //   console.info("cc");
+  //   return <Home />;
+  // };
+
+  // const displayMode = () => {
+  //   if (gameMode === "accueil") {
+
+  //   }
+  // };
+  //   if (gameMode === "flags") {
+  //     return <Flags />;
+  //   }
+  //   if (gameMode === "money") {
+  //     return <Money />;
+  //   }
+  //   if (gameMode === "langages") {
+  //     return <Langages />;
+  //   }
+  // };
+
+  // if (gameMode) {
+  //   return displayMode();
+  // }
   return (
     <nav>
       <img
@@ -9,7 +36,7 @@ export default function Nav() {
       />
       <ul>
         <li>
-          <Link to="/">Accueil</Link>
+          <Link to="/"> Accueil </Link>
         </li>
         <li>
           <Link to="/Rules">Règles</Link>
@@ -21,3 +48,5 @@ export default function Nav() {
     </nav>
   );
 }
+
+// const [gameMode, setGameMode] = useState("");

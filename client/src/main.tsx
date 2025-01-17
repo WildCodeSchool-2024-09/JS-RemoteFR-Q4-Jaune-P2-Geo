@@ -7,12 +7,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component/pages
 import App from "./App";
-import Capitals from "./pages/Capitals/Capitals";
 import Contact from "./pages/Contact/Contact";
-import Flags from "./pages/Flags/Flags";
+import Games from "./pages/Games/Games";
 import Home from "./pages/Home/Home";
-import Langages from "./pages/Langages/Langages";
-import Money from "./pages/Money/Money";
 import Rules from "./pages/Rules/Rules";
 
 //CSS import
@@ -21,7 +18,6 @@ import "./pages/Contact/contact.css";
 import "./pages/Home/home.css";
 import "./pages/Flags/flags.css";
 import "./pages/Rules/rules.css";
-import "./components/Theme/theme.css";
 import "./components/Footer/footer.css";
 import "./components/Nav/nav.css";
 
@@ -42,11 +38,8 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
     children: [
       { path: "/", element: <Home /> },
-      { path: "/Capitals", element: <Capitals /> },
       { path: "/Contact", element: <Contact /> },
-      { path: "/Flags", element: <Flags /> },
-      { path: "/Langages", element: <Langages /> },
-      { path: "/Money", element: <Money /> },
+      { path: "/Games", element: <Games /> },
       { path: "/Rules", element: <Rules /> },
     ],
   },
