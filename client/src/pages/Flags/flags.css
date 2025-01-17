@@ -39,7 +39,8 @@
   }
 }
 
-button .flags {
+button .flags,
+.flagAnswer {
   max-width: 23vw;
   border-radius: 8px;
 }
@@ -66,7 +67,10 @@ dialog {
   width: 80vw;
   margin: 4rem auto;
 }
-
+.flagAnswer {
+  display: block;
+  margin: 0 auto;
+}
 .good {
   border: 8px solid var(--color-green);
 
