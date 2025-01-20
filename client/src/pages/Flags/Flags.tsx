@@ -21,6 +21,7 @@ export default function Flags() {
   const [isValidate, setIsValidate] = useState(false);
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
+  const [timer, setTimer] = useState(10);
 
   useEffect(() => {
     axios
@@ -34,6 +35,21 @@ export default function Flags() {
         setIsLoading(false);
       });
   }, []);
+
+  //Timer
+  useEffect(() => {
+    console.info("coucou");
+    if (timer > 0 && !isAnswerSelected) {
+      setTimeout(() => {
+        setTimer(timer - 1);
+      }, 1000);
+    }
+    if (timer === 0) {
+      setDialogOpen(true);
+      setIsValidate(false);
+      setIsAnswerSelected(true);
+    }
+  }, [timer, isAnswerSelected]);
 
   // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
   const generateAnswer = () => {
@@ -58,6 +74,7 @@ export default function Flags() {
     setQuestionCount((prevCount) => prevCount + 1);
     closeDialog();
     setIsAnswerSelected(false);
+    setTimer(10);
   };
 
   const handleChoiseAnswer = (countryIndex: number) => {
@@ -124,6 +141,7 @@ export default function Flags() {
 
   return (
     <>
+      <div className="timer">{timer}</div>
       <div className="conteneurTitleScore">
         <img
           className="imgTheme"
@@ -157,7 +175,10 @@ export default function Flags() {
         </div>
 
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p> Réponse choisit : {countries[userChoiceIndex].name.common} </p>
+          {timer > 0 && (
+            <p> Réponse choisit : {countries[userChoiceIndex].name.common} </p>
+          )}
+          {timer === 0 && <p>Temps écoulés !</p>}
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common
