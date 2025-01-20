@@ -4,7 +4,7 @@ export default function Contact() {
       <h1>Contact</h1>
 
       <form action="mailto:45.killian.georges@gmail.com" method="post">
-        <div className="container">
+        <div className="containerForm">
           <label htmlFor="nom">Nom :</label>
           <input
             type="text"
@@ -40,9 +40,9 @@ export default function Contact() {
             placeholder="Entrez votre message"
             required
           />
+          <button type="button">Envoyer</button>
         </div>
       </form>
-      <button type="button">Envoyer</button>
     </>
   );
 }

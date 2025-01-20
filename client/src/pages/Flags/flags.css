@@ -93,12 +93,12 @@ dialog {
     margin: 0 auto;
   }
   .imgTheme {
-    min-height: 12vh;
+    min-height: 10vh;
     min-width: 35vw;
     padding: 4rem;
   }
   button .flags {
-    max-width: 18vw;
+    max-width: 15vw;
   }
   .conteneurTheme {
     width: 60vw;

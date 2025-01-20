@@ -1,15 +1,12 @@
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  padding-top: 3rem;
+  text-align: center;
+
   font-size: 0.8rem;
   color: white;
 }
 
-@media only screen and (min-width: 920px) {
+@media only screen and (min-width: 768px) {
   .footer {
-    padding-top: 10rem;
+    padding: 2rem;
   }
 }
