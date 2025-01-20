@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Flags({ countries }: FlagsProps) {
+export default function Flags({ countries }: ThemeProps) {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
   const [questionCount, setQuestionCount] = useState(0);

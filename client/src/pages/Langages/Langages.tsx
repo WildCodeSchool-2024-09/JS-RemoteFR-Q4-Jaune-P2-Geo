@@ -1,10 +1,15 @@
 export default function Langages() {
+  // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
+
   return (
-    <h1>
-      <img
-        src="/public/images/Langues.png"
-        alt="Un nuage ou ce trouve un texte ou il est écrit Langues"
-      />
-    </h1>
+    <>
+      <div className="conteneurTitleScore">
+        <img
+          className="imgTheme"
+          src={"/public/images/Langues.png"}
+          alt="Un boutton nuage où se trouve un texte Capital"
+        />
+      </div>
+    </>
   );
 }

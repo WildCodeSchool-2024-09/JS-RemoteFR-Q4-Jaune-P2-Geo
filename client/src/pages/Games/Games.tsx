@@ -27,7 +27,7 @@ export default function Games() {
 
   const displayMode = () => {
     if (gameMode === "capitals") {
-      return <Capitals />;
+      return <Capitals countries={countries} />;
     }
     if (gameMode === "flags") {
       return <Flags countries={countries} />;

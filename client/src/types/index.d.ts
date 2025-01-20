@@ -5,8 +5,9 @@ interface CountriesType {
   flags: {
     png: string;
   };
+  capital: string;
 }
 
-interface FlagsProps {
+interface ThemeProps {
   countries: CountriesType[]; // `countries` est un tableau d'objets `CountriesType`
 }
