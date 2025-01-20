@@ -1,18 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-interface CountriesType {
-  name: {
-    common: string;
-  };
-  flags: {
-    png: string;
-  };
-}
-
-export default function Flags() {
-  const [countries, setCountries] = useState([] as CountriesType[]);
-  const [isLoading, setIsLoading] = useState(true);
+export default function Flags({ countries }: FlagsProps) {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
   const [goodAnswer, setGoodAnswer] = useState(0 as number);
   const [questionCount, setQuestionCount] = useState(0);
@@ -21,19 +9,6 @@ export default function Flags() {
   const [isValidate, setIsValidate] = useState(false);
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get("https://restcountries.com/v3.1/all")
-      .then((response) => {
-        setCountries(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
-  }, []);
 
   // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
   const generateAnswer = () => {
@@ -83,10 +58,6 @@ export default function Flags() {
   const closeDialog = () => {
     setDialogOpen(false);
   };
-
-  if (isLoading) {
-    return <h3>Chargement...</h3>;
-  }
 
   // Si les pays sont chargés, générer la première question
   if (countries.length && nbsRandom.length === 0) {
