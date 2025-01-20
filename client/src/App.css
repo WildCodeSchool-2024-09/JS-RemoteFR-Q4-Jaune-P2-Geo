@@ -25,3 +25,9 @@ body {
   );
   background-attachment: fixed;
 }
+
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  padding: 3rem;
+}

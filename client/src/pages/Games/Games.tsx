@@ -36,64 +36,38 @@ export default function Games() {
     return (
       <>
         <div className="home_theme">
-          <div className="home">
-            <h1>GEO QUIZ</h1>
-          </div>
+          <h1>GEO QUIZ</h1>
 
-          <div className="theme">
-            <h2 className="title-themes">
-              <b>Choisie un thème !</b>
-            </h2>
+          <h2>Choisie un thème !</h2>
 
-            <div className="containers-themes">
-              <button
-                type="button"
-                value="capitals"
-                onClick={changeMode}
-                className="btn-Capitals"
-              >
-                <img
-                  src={"/public/images/Capitales.png"}
-                  alt="Un boutton nuage où se trouve un texte Capitales"
-                />
-              </button>
+          <div className="containers-themes">
+            <button type="button" value="capitals" onClick={changeMode}>
+              <img
+                src={"/public/images/Capitales.png"}
+                alt="Un boutton nuage où se trouve un texte Capitales"
+              />
+            </button>
 
-              <button
-                type="button"
-                value="flags"
-                onClick={changeMode}
-                className="btn-Flags"
-              >
-                <img
-                  src={"/public/images/drapeaux.png"}
-                  alt="Un boutton nuage où se trouve un texte Drapeau"
-                />
-              </button>
+            <button type="button" value="flags" onClick={changeMode}>
+              <img
+                src={"/public/images/drapeaux.png"}
+                alt="Un boutton nuage où se trouve un texte Drapeau"
+              />
+            </button>
 
-              <button
-                type="button"
-                value="money"
-                onClick={changeMode}
-                className="btn-Money"
-              >
-                <img
-                  src={"/public/images/Monnaies.png"}
-                  alt="Un boutton nuage où se trouve un texte Monnaies"
-                />
-              </button>
+            <button type="button" value="money" onClick={changeMode}>
+              <img
+                src={"/public/images/Monnaies.png"}
+                alt="Un boutton nuage où se trouve un texte Monnaies"
+              />
+            </button>
 
-              <button
-                type="button"
-                value="langages"
-                onClick={changeMode}
-                className="btn-Langages"
-              >
-                <img
-                  src={"/public/images/Langues.png"}
-                  alt="Un boutton nuage où se trouve un texte Langues"
-                />
-              </button>
-            </div>
+            <button type="button" value="langages" onClick={changeMode}>
+              <img
+                src={"/public/images/Langues.png"}
+                alt="Un boutton nuage où se trouve un texte Langues"
+              />
+            </button>
           </div>
         </div>
       </>

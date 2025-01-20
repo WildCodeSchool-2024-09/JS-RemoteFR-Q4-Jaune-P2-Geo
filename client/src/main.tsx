@@ -17,6 +17,7 @@ import "./App.css";
 import "./pages/Contact/contact.css";
 import "./pages/Home/home.css";
 import "./pages/Flags/flags.css";
+import "./pages/Games/games.css";
 import "./pages/Rules/rules.css";
 import "./components/Footer/footer.css";
 import "./components/Nav/nav.css";
