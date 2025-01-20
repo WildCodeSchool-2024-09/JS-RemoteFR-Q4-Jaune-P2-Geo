@@ -1,11 +1,23 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Capitals from "../../pages/Capitals/Capitals";
 import Flags from "../../pages/Flags/Flags";
 import Langages from "../../pages/Langages/Langages";
 import Money from "../Money/Money";
 
 export default function Games() {
-  // requête API
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((response) => {
+        setCountries(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   const [gameMode, setGameMode] = useState("");
 
@@ -18,7 +30,7 @@ export default function Games() {
       return <Capitals />;
     }
     if (gameMode === "flags") {
-      return <Flags />;
+      return <Flags countries={countries} />;
     }
     if (gameMode === "money") {
       return <Money />;
@@ -28,7 +40,7 @@ export default function Games() {
     }
   };
 
-  if (gameMode) {
+  if (gameMode && countries) {
     return displayMode();
   }
 
