@@ -36,7 +36,7 @@ export default function Games() {
       return <Money />;
     }
     if (gameMode === "langages") {
-      return <Langages />;
+      return <Langages countries={countries} />;
     }
   };
 

@@ -130,7 +130,7 @@ export default function Capitals({ countries }: ThemeProps) {
               ? "Bien joué ! C'était bien :"
               : "Dommage, la réponse était :"}
           </p>
-          <p className="flagAnswer">{countries[goodAnswer].capital[0]}</p>
+          <p className="goodAnswer">{countries[goodAnswer].capital[0]}</p>
           <button type="button" onClick={handleNextQuestion}>
             Question suivante
           </button>

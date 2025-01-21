@@ -6,6 +6,7 @@ interface CountriesType {
     png: string;
   };
   capital: string;
+  languages: string;
 }
 
 interface ThemeProps {
