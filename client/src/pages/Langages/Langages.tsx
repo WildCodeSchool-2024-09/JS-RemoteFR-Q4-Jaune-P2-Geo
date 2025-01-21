@@ -11,7 +11,6 @@ export default function Langages({ countries }: ThemeProps) {
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
 
   // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
-
   const generateAnswer = () => {
     const arrayNbs = [] as number[];
     while (arrayNbs.length < 3) {
@@ -107,7 +106,7 @@ export default function Langages({ countries }: ThemeProps) {
 
       <div className="conteneurTheme">
         <h2>
-          {questionCount} - Quel est le langagee de
+          {questionCount} - Quel est le langage du pays :
           {countries[goodAnswer].name.common} ?
         </h2>
 
@@ -118,20 +117,28 @@ export default function Langages({ countries }: ThemeProps) {
               type="button"
               onClick={() => handleChoiseAnswer(index)}
             >
-              toto
+              {Object.values(countries[index].languages).join(", ")}
             </button>
           ))}
         </div>
 
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p> Réponse choisit : {countries[userChoiceIndex].capital[0]} </p>
+          <p>
+            {" "}
+            Réponse choisit :{" "}
+            {Object.values(countries[userChoiceIndex].languages).join(
+              ", ",
+            )}{" "}
+          </p>
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common
               ? "Bien joué ! C'était bien :"
               : "Dommage, la réponse était :"}
           </p>
-          <p className="flagAnswer">{countries[goodAnswer].capital[0]}</p>
+          <p className="goodAnswer">
+            {Object.values(countries[goodAnswer].languages).join(", ")}
+          </p>
           <button type="button" onClick={handleNextQuestion}>
             Question suivante
           </button>

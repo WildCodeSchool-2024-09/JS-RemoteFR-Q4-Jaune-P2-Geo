@@ -13,3 +13,7 @@
   background: var(--color-orange);
   font-family: "Love Ya Like A Sister", serif;
 }
+
+.goodAnswer {
+  text-align: center;
+}
