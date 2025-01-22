@@ -48,8 +48,6 @@ export default function Games() {
     return (
       <>
         <div className="home_theme">
-          <h1>GEO QUIZ</h1>
-
           <h2>Choisie un thème !</h2>
 
           <div className="containers-themes">
