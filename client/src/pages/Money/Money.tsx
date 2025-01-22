@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Result from "../../components/Result";
 
 export default function Money({ countries }: ThemeProps) {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
@@ -10,12 +11,21 @@ export default function Money({ countries }: ThemeProps) {
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const [timer, setTimer] = useState(10);
+  const [message, setMessage] = useState("");
+  const [timerColor, setTimerColor] = useState("green");
 
   //Timer
   useEffect(() => {
+    console.info("coucou");
     if (timer > 0 && !isAnswerSelected) {
       setTimeout(() => {
         setTimer(timer - 1);
+        if (timer <= 7) {
+          setTimerColor("orange");
+          if (timer <= 4) {
+            setTimerColor("red");
+          }
+        }
       }, 1000);
     }
     if (timer === 0) {
@@ -49,6 +59,7 @@ export default function Money({ countries }: ThemeProps) {
     closeDialog();
     setIsAnswerSelected(false);
     setTimer(10);
+    setTimerColor("green");
   };
 
   const handleChoiseAnswer = (countryIndex: number) => {
@@ -81,36 +92,14 @@ export default function Money({ countries }: ThemeProps) {
   }
 
   if (questionCount === 11) {
-    if (score === 10) {
-      return <h2>{score}/10 - Félicitations un vrai globe-trotters !</h2>;
-    }
-    if (score >= 8) {
-      return <h2>{score}/10 - Un petit effort et tu seras au top !</h2>;
-    }
-    if (score >= 6) {
-      return <h2>{score}/10 - Continue à explorer !</h2>;
-    }
-    if (score >= 4) {
-      return (
-        <h2>
-          {score}/10 - Tu es sur la bonne voie mais il reste encore beaucoup à
-          découvrir !
-        </h2>
-      );
-    }
-    if (score >= 2) {
-      return (
-        <h2>
-          {score}/10 - Ce n'est qu'un début, mais il te reste encore du chemin à
-          parcourir !
-        </h2>
-      );
-    }
-    return <h2>{score}/10 - Tu as encore du chemin à faire !</h2>;
+    return <Result score={score} message={message} setMessage={setMessage} />;
   }
 
   return (
     <>
+      <div className="timer" style={{ color: timerColor }}>
+        {timer}
+      </div>
       <div className="conteneurTitleScore">
         <img
           className="imgTheme"
@@ -138,11 +127,16 @@ export default function Money({ countries }: ThemeProps) {
           ))}
         </div>
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p>
-            {" "}
-            Réponse choisie :{" "}
-            {Object.values(countries[userChoiceIndex].currencies)[0].name}{" "}
-          </p>
+          {timer > 0 && (
+            <p>
+              {" "}
+              Réponse choisit :{" "}
+              {Object.values(countries[userChoiceIndex].languages).join(
+                ", ",
+              )}{" "}
+            </p>
+          )}
+          {timer === 0 && <p>Temps écoulés !</p>}
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common
@@ -150,7 +144,7 @@ export default function Money({ countries }: ThemeProps) {
               : "Dommage, la réponse était :"}
           </p>
           <p className="goodAnswer">
-            {Object.values(countries[goodAnswer].currencies)[0].name}
+            {Object.values(countries[goodAnswer].languages).join(", ")}
           </p>
           <button type="button" onClick={handleNextQuestion}>
             Question suivante
