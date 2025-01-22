@@ -14,24 +14,29 @@ export default function Langages({ countries }: ThemeProps) {
   const [timer, setTimer] = useState(10);
   const [timerColor, setTimerColor] = useState("green");
 
-  //Timer
+  //Timer (avec setInterval)
   useEffect(() => {
-    console.info("coucou");
     if (timer > 0 && !isAnswerSelected) {
-      setTimeout(() => {
-        setTimer(timer - 1);
-        if (timer <= 7) {
-          setTimerColor("orange");
-          if (timer <= 4) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => {
+          const newTimer = prevTimer - 1;
+          if (newTimer <= 6) {
+            setTimerColor("orange");
+          }
+          if (newTimer <= 3) {
             setTimerColor("red");
           }
-        }
+          return newTimer;
+        });
       }, 1000);
+      return () => clearInterval(interval);
     }
+
     if (timer === 0) {
       setDialogOpen(true);
       setIsValidate(false);
       setIsAnswerSelected(true);
+      return;
     }
   }, [timer, isAnswerSelected]);
 

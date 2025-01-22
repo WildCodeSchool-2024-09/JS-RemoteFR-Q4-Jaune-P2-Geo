@@ -14,11 +14,11 @@ export default function Flags({ countries }: ThemeProps) {
   const [message, setMessage] = useState("");
   const [timerColor, setTimerColor] = useState("green");
 
-  //Timer
+  //Timer (sans setInterval)
   useEffect(() => {
     if (timer > 0 && !isAnswerSelected) {
-      setTimeout(() => {
-        setTimer(timer - 1);
+      const timeout = setTimeout(() => {
+        setTimer((prev) => prev - 1);
         if (timer <= 7) {
           setTimerColor("orange");
           if (timer <= 4) {
@@ -26,7 +26,10 @@ export default function Flags({ countries }: ThemeProps) {
           }
         }
       }, 1000);
+
+      return () => clearTimeout(timeout);
     }
+
     if (timer === 0) {
       setDialogOpen(true);
       setIsValidate(false);

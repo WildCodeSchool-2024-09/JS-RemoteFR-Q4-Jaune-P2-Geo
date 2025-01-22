@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Result from "../../components/Result";
 
 export default function Capitals({ countries }: ThemeProps) {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
@@ -10,28 +9,32 @@ export default function Capitals({ countries }: ThemeProps) {
   const [isValidate, setIsValidate] = useState(false);
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
-  const [message, setMessage] = useState("");
   const [timer, setTimer] = useState(10);
   const [timerColor, setTimerColor] = useState("green");
 
-  //Timer
+  //Timer (avec setInterval)
   useEffect(() => {
-    console.info("coucou");
     if (timer > 0 && !isAnswerSelected) {
-      setTimeout(() => {
-        setTimer(timer - 1);
-        if (timer <= 7) {
-          setTimerColor("orange");
-          if (timer <= 4) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => {
+          const newTimer = prevTimer - 1;
+          if (newTimer <= 6) {
+            setTimerColor("orange");
+          }
+          if (newTimer <= 3) {
             setTimerColor("red");
           }
-        }
+          return newTimer;
+        });
       }, 1000);
+      return () => clearInterval(interval);
     }
+
     if (timer === 0) {
       setDialogOpen(true);
       setIsValidate(false);
       setIsAnswerSelected(true);
+      return;
     }
   }, [timer, isAnswerSelected]);
 
@@ -92,7 +95,32 @@ export default function Capitals({ countries }: ThemeProps) {
   }
 
   if (questionCount === 11) {
-    return <Result score={score} message={message} setMessage={setMessage} />;
+    if (score === 10) {
+      return <h2>{score}/10 - Félicitations un vrai globe-trotters !</h2>;
+    }
+    if (score >= 8) {
+      return <h2>{score}/10 - Un petit effort et tu seras au top !</h2>;
+    }
+    if (score >= 6) {
+      return <h2>{score}/10 - Continue à explorer !</h2>;
+    }
+    if (score >= 4) {
+      return (
+        <h2>
+          {score}/10 - Tu es sur la bonne voie mais il reste encore beaucoup à
+          découvrir !
+        </h2>
+      );
+    }
+    if (score >= 2) {
+      return (
+        <h2>
+          {score}/10 - Ce n'est qu'un début, mais il te reste encore du chemin à
+          parcourir !
+        </h2>
+      );
+    }
+    return <h2>{score}/10 - Tu as encore du chemin à faire !</h2>;
   }
   return (
     <>
