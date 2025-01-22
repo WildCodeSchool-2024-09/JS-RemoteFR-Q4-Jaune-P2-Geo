@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Result from "../../components/Result";
 
 export default function Capitals({ countries }: ThemeProps) {
@@ -11,6 +11,29 @@ export default function Capitals({ countries }: ThemeProps) {
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const [message, setMessage] = useState("");
+  const [timer, setTimer] = useState(10);
+  const [timerColor, setTimerColor] = useState("green");
+
+  //Timer
+  useEffect(() => {
+    console.info("coucou");
+    if (timer > 0 && !isAnswerSelected) {
+      setTimeout(() => {
+        setTimer(timer - 1);
+        if (timer <= 7) {
+          setTimerColor("orange");
+          if (timer <= 4) {
+            setTimerColor("red");
+          }
+        }
+      }, 1000);
+    }
+    if (timer === 0) {
+      setDialogOpen(true);
+      setIsValidate(false);
+      setIsAnswerSelected(true);
+    }
+  }, [timer, isAnswerSelected]);
 
   // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
   const generateAnswer = () => {
@@ -35,6 +58,7 @@ export default function Capitals({ countries }: ThemeProps) {
     setQuestionCount((prevCount) => prevCount + 1);
     closeDialog();
     setIsAnswerSelected(false);
+    setTimer(10);
   };
   console.info(countries);
 
@@ -72,6 +96,9 @@ export default function Capitals({ countries }: ThemeProps) {
   }
   return (
     <>
+      <div className="timer" style={{ color: timerColor }}>
+        {timer}
+      </div>
       <div className="conteneurTitleScore">
         <img
           className="imgTheme"
@@ -100,7 +127,10 @@ export default function Capitals({ countries }: ThemeProps) {
         </div>
 
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p> Réponse choisit : {countries[userChoiceIndex].capital[0]} </p>
+          {timer > 0 && (
+            <p> Réponse choisit : {countries[userChoiceIndex].capital[0]} </p>
+          )}
+          {timer === 0 && <p>Temps écoulés !</p>}
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common

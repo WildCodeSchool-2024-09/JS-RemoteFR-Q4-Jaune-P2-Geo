@@ -56,3 +56,13 @@
   font-size: 1rem;
   background: var(--color-orange);
 }
+.timer {
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorTimer {
+  color: red;
+}
