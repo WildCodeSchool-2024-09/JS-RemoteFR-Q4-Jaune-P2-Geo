@@ -1,5 +1,5 @@
-import Result from "../../components/Result";
 import { useState } from "react";
+import Result from "../../components/Result";
 
 export default function Capitals({ countries }: ThemeProps) {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);

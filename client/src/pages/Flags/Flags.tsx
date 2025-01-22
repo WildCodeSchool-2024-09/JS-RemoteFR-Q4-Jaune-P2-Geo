@@ -14,7 +14,6 @@ export default function Flags({ countries }: ThemeProps) {
 
   //Timer
   useEffect(() => {
-    console.info("coucou");
     if (timer > 0 && !isAnswerSelected) {
       setTimeout(() => {
         setTimer(timer - 1);
@@ -83,6 +82,7 @@ export default function Flags({ countries }: ThemeProps) {
   }
 
   if (questionCount === 11) {
+    console.info("cc");
     return <Result score={score} />;
   }
 
