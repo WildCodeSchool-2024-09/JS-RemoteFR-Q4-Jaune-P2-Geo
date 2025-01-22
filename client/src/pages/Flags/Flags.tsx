@@ -58,6 +58,7 @@ export default function Flags({ countries }: ThemeProps) {
     closeDialog();
     setIsAnswerSelected(false);
     setTimer(10);
+    setTimerColor("green");
   };
 
   const handleChoiseAnswer = (countryIndex: number) => {
