@@ -13,6 +13,8 @@ interface ThemeProps {
   countries: CountriesType[]; // `countries` est un tableau d'objets `CountriesType`
 }
 
-interface ScoreType {
+type propsResultType = {
   score: number;
-}
+  message: string;
+  setMessage: Dispatch<SetStateAction<string>>;
+};

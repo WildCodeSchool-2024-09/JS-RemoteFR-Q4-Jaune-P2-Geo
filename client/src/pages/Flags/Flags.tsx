@@ -11,6 +11,7 @@ export default function Flags({ countries }: ThemeProps) {
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const [timer, setTimer] = useState(10);
+  const [message, setMessage] = useState("");
 
   //Timer
   useEffect(() => {
@@ -82,10 +83,8 @@ export default function Flags({ countries }: ThemeProps) {
   }
 
   if (questionCount === 11) {
-    console.info("cc");
-    return <Result score={score} />;
+    return <Result score={score} message={message} setMessage={setMessage} />;
   }
-
   return (
     <>
       <div className="timer">{timer}</div>

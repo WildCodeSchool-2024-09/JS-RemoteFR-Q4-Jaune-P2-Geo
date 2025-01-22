@@ -10,6 +10,7 @@ export default function Langages({ countries }: ThemeProps) {
   const [isValidate, setIsValidate] = useState(false);
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
+  const [message, setMessage] = useState("");
 
   // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
   const generateAnswer = () => {
@@ -67,7 +68,7 @@ export default function Langages({ countries }: ThemeProps) {
   }
 
   if (questionCount === 11) {
-    return <Result score={score} />;
+    return <Result score={score} message={message} setMessage={setMessage} />;
   }
   return (
     <>
