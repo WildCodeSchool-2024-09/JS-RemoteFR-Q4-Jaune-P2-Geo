@@ -59,6 +59,7 @@ export default function Capitals({ countries }: ThemeProps) {
     closeDialog();
     setIsAnswerSelected(false);
     setTimer(10);
+    setTimerColor("green");
   };
   console.info(countries);
 
