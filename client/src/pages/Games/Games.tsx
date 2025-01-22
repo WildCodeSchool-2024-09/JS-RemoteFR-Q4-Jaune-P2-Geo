@@ -33,7 +33,7 @@ export default function Games() {
       return <Flags countries={countries} />;
     }
     if (gameMode === "money") {
-      return <Money />;
+      return <Money countries={countries} />;
     }
     if (gameMode === "langages") {
       return <Langages countries={countries} />;
