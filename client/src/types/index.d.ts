@@ -12,3 +12,7 @@ interface CountriesType {
 interface ThemeProps {
   countries: CountriesType[]; // `countries` est un tableau d'objets `CountriesType`
 }
+
+interface ScoreType {
+  score: number;
+}

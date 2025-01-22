@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Games from "../Games/Games";
+import Result from "../../components/Result";
 
 export default function Flags({ countries }: ThemeProps) {
   const [nbsRandom, setNbsRandom] = useState([] as number[]);
@@ -83,87 +83,7 @@ export default function Flags({ countries }: ThemeProps) {
   }
 
   if (questionCount === 11) {
-    if (score === 10) {
-      return (
-        <>
-          <h1>Bravo !</h1>
-          <div className="result">
-            <h2>Tu obtiens une note de :</h2>
-            <p className="scoreFinal">{score}/10</p>
-            <p>Félicitations, un vrai globe-trotter !</p>
-          </div>
-          <Games />
-        </>
-      );
-    }
-    if (score >= 8) {
-      return (
-        <>
-          <h1>Bravo !</h1>
-          <div className="result">
-            <h2>Tu obtiens une note de :</h2>
-            <p className="scoreFinal">{score}/10</p>
-            <p>Un petit effort et tu seras au top !</p>
-          </div>
-          <Games />
-        </>
-      );
-    }
-    if (score >= 6) {
-      return (
-        <>
-          <h1>Bravo !</h1>
-          <div className="result">
-            <h2>Tu obtiens une note de :</h2>
-            <p className="scoreFinal">{score}/10</p>
-            <p>Continue à explorer !</p>
-          </div>
-        </>
-      );
-    }
-    if (score >= 4) {
-      return (
-        <>
-          <h1>Bravo !</h1>
-          <div className="result">
-            <h2>Tu obtiens une note de :</h2>
-            <p className="scoreFinal">{score}/10</p>
-            <p>
-              Tu es sur la bonne voie, mais il reste encore beaucoup à découvrir
-              !
-            </p>
-          </div>
-          <Games />
-        </>
-      );
-    }
-    if (score >= 2) {
-      return (
-        <>
-          <h1>Bravo !</h1>
-          <div className="result">
-            <h2>Tu obtiens une note de :</h2>
-            <p className="scoreFinal">{score}/10</p>
-            <p>
-              Ce n'est qu'un début, mais il te reste encore du chemin à
-              parcourir !
-            </p>
-          </div>
-          <Games />
-        </>
-      );
-    }
-    return (
-      <>
-        <h1>Bravo !</h1>
-        <div className="result">
-          <h2>Tu obtiens une note de :</h2>
-          <p className="scoreFinal">{score}/10</p>
-          <p>Tu as encore du chemin à faire !</p>
-        </div>
-        <Games />
-      </>
-    );
+    return <Result score={score} />;
   }
 
   return (

@@ -43,3 +43,16 @@
   border-radius: 50%;
   padding: 1rem;
 }
+
+.buttonPlayAgain {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 1.2rem;
+  font-family: "Love Ya Like A Sister", serif;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  background: var(--color-orange);
+}
