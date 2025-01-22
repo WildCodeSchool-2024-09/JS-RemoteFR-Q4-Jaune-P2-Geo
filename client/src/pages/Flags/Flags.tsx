@@ -10,6 +10,7 @@ export default function Flags({ countries }: ThemeProps) {
   const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const [timer, setTimer] = useState(10);
+  const [timerColor, setTimerColor] = useState("green");
 
   //Timer
   useEffect(() => {
@@ -17,6 +18,12 @@ export default function Flags({ countries }: ThemeProps) {
     if (timer > 0 && !isAnswerSelected) {
       setTimeout(() => {
         setTimer(timer - 1);
+        if (timer <= 7) {
+          setTimerColor("orange");
+          if (timer <= 4) {
+            setTimerColor("red");
+          }
+        }
       }, 1000);
     }
     if (timer === 0) {
@@ -112,7 +119,9 @@ export default function Flags({ countries }: ThemeProps) {
 
   return (
     <>
-      <div className="timer">{timer}</div>
+      <div className="timer" style={{ color: timerColor }}>
+        {timer}
+      </div>
       <div className="conteneurTitleScore">
         <img
           className="imgTheme"

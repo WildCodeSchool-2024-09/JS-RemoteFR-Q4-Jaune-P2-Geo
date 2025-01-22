@@ -17,3 +17,14 @@
 .goodAnswer {
   text-align: center;
 }
+
+.timer {
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorTimer {
+  color: red;
+}
