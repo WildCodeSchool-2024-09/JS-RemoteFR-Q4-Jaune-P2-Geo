@@ -139,7 +139,7 @@ export default function Capitals({ countries }: ThemeProps) {
 
       <div className="conteneurTheme">
         <h2>
-          {questionCount} - Quel est la capitale de
+          {questionCount} - Quel est la capitale de{" "}
           {countries[goodAnswer].name.common} ?
         </h2>
 
@@ -150,14 +150,14 @@ export default function Capitals({ countries }: ThemeProps) {
               type="button"
               onClick={() => handleChoiseAnswer(index)}
             >
-              {countries[index].capital[0]}
+              {countries[index].capital}
             </button>
           ))}
         </div>
 
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
           {timer > 0 && (
-            <p> Réponse choisit : {countries[userChoiceIndex].capital[0]} </p>
+            <p> Réponse choisit : {countries[userChoiceIndex].capital} </p>
           )}
           {timer === 0 && <p>Temps écoulés !</p>}
           <p>
@@ -166,7 +166,7 @@ export default function Capitals({ countries }: ThemeProps) {
               ? "Bien joué ! C'était bien :"
               : "Dommage, la réponse était :"}
           </p>
-          <p className="goodAnswer">{countries[goodAnswer].capital[0]}</p>
+          <p className="goodAnswer">{countries[goodAnswer].capital}</p>
           <button type="button" onClick={handleNextQuestion}>
             Question suivante
           </button>
