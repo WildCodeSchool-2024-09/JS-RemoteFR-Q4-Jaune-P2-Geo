@@ -6,19 +6,17 @@ export default function Result({
   setMessage,
 }: propsResultType) {
   const [messageScore, setMessageScore] = useState("");
+  const [scores, setScores] = useState([] as number[]);
 
   const reloadPage = () => {
     window.location.reload();
   };
 
-  // Récupérer l'ancien score depuis le localStorage au chargement
-  const [scorePrev] = useState(
-    localStorage.getItem("score")
-      ? Number(localStorage.getItem("score"))
-      : null,
-  );
-
   useEffect(() => {
+    // Récupérer les scores depuis le localStorage
+    const storedScores = localStorage.getItem("scores");
+    const scoresArray = storedScores ? JSON.parse(storedScores) : [];
+    setScores(scoresArray);
     if (score === 10) {
       setMessage("Félicitations, un vrai globe-trotter !");
     }
@@ -43,14 +41,15 @@ export default function Result({
     if (score >= 0 && score < 2) {
       setMessage(" Tu as encore du chemain à faire");
     }
-
-    if (scorePrev && score > scorePrev) {
-      localStorage.setItem("score", score.toString());
-      setMessageScore(
-        "Incroyable ! Tu as dépassé le score et établi un nouveau record !",
-      );
+    // Mettre à jour les scores si le nouveau score n'est pas inclus
+    if (!scoresArray.includes(score)) {
+      scoresArray.push(score);
+      scoresArray.sort((a: number, b: number) => b - a); // Trier les scores
+      localStorage.setItem("scores", JSON.stringify(scoresArray));
+      setScores(scoresArray);
+      setMessageScore("Nouveau score ajouté !");
     }
-  }, [setMessage, score, scorePrev]);
+  }, [setMessage, score]);
 
   return (
     <>
@@ -62,15 +61,18 @@ export default function Result({
           <p className="scoreFinal">{score}/10</p>
           <p>{message}</p>
         </div>
+
         <div className="topScore">
-          <h2> Top score</h2>
-          <p>
-            {messageScore !== ""
-              ? `${messageScore} Nouveau Top score : ${score}/10`
-              : `Essai de faire mieux pour battre le score qui était de ${scorePrev}/10!`}
-          </p>
+          <h2>Top scores :</h2>
+          <ul>
+            {scores.map((score) => (
+              <li key={score}>{score}/10</li>
+            ))}
+          </ul>
+          <p>{messageScore}</p>
         </div>
       </div>
+
       <button className="buttonPlayAgain" type="button" onClick={reloadPage}>
         Rejouer
       </button>
