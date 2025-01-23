@@ -16,7 +16,6 @@ export default function Langages({ countries }: ThemeProps) {
 
   //Timer
   useEffect(() => {
-    console.info("coucou");
     if (timer > 0 && !isAnswerSelected) {
       setTimeout(() => {
         setTimer(timer - 1);

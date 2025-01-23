@@ -1,13 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Result({
   score,
   message,
   setMessage,
 }: propsResultType) {
+  const [messageScore, setMessageScore] = useState("");
+
   const reloadPage = () => {
     window.location.reload();
   };
+
+  // Récupérer l'ancien score depuis le localStorage au chargement
+  const [scorePrev] = useState(
+    localStorage.getItem("score")
+      ? Number(localStorage.getItem("score"))
+      : null,
+  );
 
   useEffect(() => {
     if (score === 10) {
@@ -34,15 +43,32 @@ export default function Result({
     if (score >= 0 && score < 2) {
       setMessage(" Tu as encore du chemain à faire");
     }
-  }, [setMessage, score]);
+
+    if (scorePrev && score > scorePrev) {
+      localStorage.setItem("score", score.toString());
+      setMessageScore(
+        "Incroyable ! Tu as dépassé le score et établi un nouveau record !",
+      );
+    }
+  }, [setMessage, score, scorePrev]);
+
   return (
     <>
+      <h1>Bravo !</h1>
+
       <div className="contenerResult">
-        <h1>Bravo !</h1>
         <div className="result">
           <h2>Tu obtiens une note de :</h2>
           <p className="scoreFinal">{score}/10</p>
           <p>{message}</p>
+        </div>
+        <div className="topScore">
+          <h2> Top score</h2>
+          <p>
+            {messageScore !== ""
+              ? `${messageScore} Nouveau Top score : ${score}/10`
+              : `Essai de faire mieux pour battre le score qui était de ${scorePrev}/10!`}
+          </p>
         </div>
       </div>
       <button className="buttonPlayAgain" type="button" onClick={reloadPage}>

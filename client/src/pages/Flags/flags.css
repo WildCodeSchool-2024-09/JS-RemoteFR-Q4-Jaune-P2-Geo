@@ -56,8 +56,8 @@ dialog button {
   border: none;
 }
 
-p {
-  margin: 2rem;
+dialog p {
+  margin: 1.6rem;
 }
 
 dialog {
