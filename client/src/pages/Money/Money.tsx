@@ -131,13 +131,18 @@ export default function Money({ countries }: ThemeProps) {
             </button>
           ))}
         </div>
+
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p>
-            {" "}
-            Réponse choisie :{" "}
-            {Object.values(countries[userChoiceIndex].currencies)[0].name} {"-"}{" "}
-            {Object.values(countries[userChoiceIndex].currencies)[0].symbol}
-          </p>
+          {timer > 0 && (
+            <p>
+              {" "}
+              Réponse choisit :{" "}
+              {Object.values(countries[userChoiceIndex].currencies)[0].name}{" "}
+              {"-"}{" "}
+              {Object.values(countries[userChoiceIndex].currencies)[0].symbol}
+            </p>
+          )}
+          {timer === 0 && <p>Temps écoulés !</p>}
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common
