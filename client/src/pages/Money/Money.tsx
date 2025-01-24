@@ -135,7 +135,8 @@ export default function Money({ countries }: ThemeProps) {
           <p>
             {" "}
             Réponse choisie :{" "}
-            {Object.values(countries[userChoiceIndex].currencies)[0].name}{" "}
+            {Object.values(countries[userChoiceIndex].currencies)[0].name} {"-"}{" "}
+            {Object.values(countries[userChoiceIndex].currencies)[0].symbol}
           </p>
           <p>
             {countries[userChoiceIndex].name.common ===
@@ -144,7 +145,8 @@ export default function Money({ countries }: ThemeProps) {
               : "Dommage, la réponse était :"}
           </p>
           <p className="goodAnswer">
-            {Object.values(countries[goodAnswer].currencies)[0].name}
+            {Object.values(countries[goodAnswer].currencies)[0].name} {"-"}{" "}
+            {Object.values(countries[goodAnswer].currencies)[0].symbol}
           </p>
           <button type="button" onClick={handleNextQuestion}>
             Question suivante
