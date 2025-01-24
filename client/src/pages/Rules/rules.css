@@ -1,9 +1,29 @@
-.rules {
-  border: 2px dashed red;
+.theme_rules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.theme_rules {
-  border: 2px dashed green;
-  display: flex;
-  flex-direction: row;
+.rules > h1 {
+  padding: 0;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.rules_explain {
+  padding: 1rem;
+}
+
+.rules_explain > p {
+  padding-top: 3rem;
+}
+
+@media only screen and (min-width: 920px) {
+  .rules_explain > p {
+    font-size: 2rem;
+  }
+
+  .rules_explain {
+    border: dashed 2px red;
+  }
 }
