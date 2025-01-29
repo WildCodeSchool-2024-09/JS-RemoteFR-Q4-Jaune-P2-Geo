@@ -1,97 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 import Result from "../../components/Result";
+import useQuestion from "../../services/hooks/useQuestion";
+import useTimer from "../../services/hooks/useTimer";
 
 export default function Flags({ countries }: ThemeProps) {
-  const [nbsRandom, setNbsRandom] = useState([] as number[]);
-  const [goodAnswer, setGoodAnswer] = useState(0 as number);
-  const [questionCount, setQuestionCount] = useState(0);
-  const [userChoiceIndex, setUserChoiceIndex] = useState(0 as number);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [isValidate, setIsValidate] = useState(false);
-  const [score, setScore] = useState(0);
   const [isAnswerSelected, setIsAnswerSelected] = useState(false);
-  const [timer, setTimer] = useState(10);
   const [message, setMessage] = useState("");
-  const [timerColor, setTimerColor] = useState("green");
 
-  //Timer (sans setInterval)
-  useEffect(() => {
-    if (timer > 0 && !isAnswerSelected) {
-      const timeout = setTimeout(() => {
-        setTimer((prev) => prev - 1);
-        if (timer <= 7) {
-          setTimerColor("orange");
-          if (timer <= 4) {
-            setTimerColor("red");
-          }
-        }
-      }, 1000);
+  const { timer, timerColor, setTimer, setTimerColor } =
+    useTimer(isAnswerSelected);
 
-      return () => clearTimeout(timeout);
-    }
-
-    if (timer === 0) {
-      setDialogOpen(true);
-      setIsValidate(false);
-      setIsAnswerSelected(true);
-    }
-  }, [timer, isAnswerSelected]);
-
-  // Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
-  const generateAnswer = () => {
-    const arrayNbs = [] as number[];
-    while (arrayNbs.length < 3) {
-      const num = Math.floor(Math.random() * countries.length);
-      if (!arrayNbs.includes(num)) {
-        arrayNbs.push(num);
-      }
-    }
-    return arrayNbs;
-  };
-
-  // Fonction pour générer une nouvelle question avec de nouvelles réponses aléatoires
-  const handleNextQuestion = () => {
-    const randomAnswers = generateAnswer();
-    const correctAnswer =
-      randomAnswers[Math.floor(Math.random() * randomAnswers.length)];
-
-    setNbsRandom(randomAnswers); // Met à jour les réponses possibles
-    setGoodAnswer(correctAnswer); // Met à jour la bonne réponse
-    setQuestionCount((prevCount) => prevCount + 1);
-    closeDialog();
-    setIsAnswerSelected(false);
-    setTimer(10);
-    setTimerColor("green");
-  };
-
-  const handleChoiseAnswer = (countryIndex: number) => {
-    if (isAnswerSelected) return;
-    setIsAnswerSelected(true);
-
-    setUserChoiceIndex(countryIndex);
-    setDialogOpen(true);
-
-    if (countryIndex === goodAnswer) {
-      setIsValidate(true);
-    } else {
-      setIsValidate(false);
-    }
-
-    if (
-      countries[countryIndex].name.common === countries[goodAnswer].name.common
-    ) {
-      setScore((prevScore) => prevScore + 1);
-    }
-  };
-
-  const closeDialog = () => {
-    setDialogOpen(false);
-  };
-
-  // Si les pays sont chargés, générer la première question
-  if (countries.length && nbsRandom.length === 0) {
-    handleNextQuestion();
-  }
+  const {
+    score,
+    questionCount,
+    userChoiceIndex,
+    goodAnswer,
+    nbsRandom,
+    handleChoiceAnswer,
+    handleNextQuestion,
+    dialogOpen,
+    isValidate,
+  } = useQuestion(
+    countries,
+    setIsAnswerSelected,
+    isAnswerSelected,
+    setTimer,
+    setTimerColor,
+    timer,
+  );
 
   if (questionCount === 11) {
     return <Result score={score} message={message} setMessage={setMessage} />;
@@ -121,7 +58,7 @@ export default function Flags({ countries }: ThemeProps) {
             <button
               key={index}
               type="button"
-              onClick={() => handleChoiseAnswer(index)}
+              onClick={() => handleChoiceAnswer(index)}
             >
               <img
                 className="flags"

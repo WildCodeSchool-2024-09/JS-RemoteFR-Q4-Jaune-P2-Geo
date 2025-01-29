@@ -6,7 +6,7 @@ import Langages from "../../pages/Langages/Langages";
 import Money from "../Money/Money";
 
 export default function Games() {
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([] as CountriesType[]);
 
   useEffect(() => {
     axios
