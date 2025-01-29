@@ -65,12 +65,18 @@ export default function Money({ countries }: ThemeProps) {
             </button>
           ))}
         </div>
+
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
-          <p>
-            {" "}
-            Réponse choisie :{" "}
-            {Object.values(countries[userChoiceIndex].currencies)[0].name}{" "}
-          </p>
+          {timer > 0 && (
+            <p>
+              {" "}
+              Réponse choisit :{" "}
+              {Object.values(countries[userChoiceIndex].currencies)[0].name}{" "}
+              {"-"}{" "}
+              {Object.values(countries[userChoiceIndex].currencies)[0].symbol}
+            </p>
+          )}
+          {timer === 0 && <p>Temps écoulés !</p>}
           <p>
             {countries[userChoiceIndex].name.common ===
             countries[goodAnswer].name.common
@@ -78,7 +84,8 @@ export default function Money({ countries }: ThemeProps) {
               : "Dommage, la réponse était :"}
           </p>
           <p className="goodAnswer">
-            {Object.values(countries[goodAnswer].currencies)[0].name}
+            {Object.values(countries[goodAnswer].currencies)[0].name} {"-"}{" "}
+            {Object.values(countries[goodAnswer].currencies)[0].symbol}
           </p>
           <button type="button" onClick={handleNextQuestion}>
             Question suivante

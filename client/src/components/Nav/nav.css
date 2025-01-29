@@ -38,6 +38,7 @@ nav > ul > li > a:hover {
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-right: 2rem;
 }
 
 .menu-links {
@@ -47,7 +48,7 @@ nav > ul > li > a:hover {
   top: 2rem;
   background-color: rgb(71, 133, 126);
   padding: 3rem;
-  margin-left: 13rem;
+  margin-left: 11rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
 }
@@ -72,5 +73,23 @@ nav > ul > li > a:hover {
 
   nav > img {
     height: 6rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-links {
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin-left: 55rem;
+  }
+
+  .menu-links > li > a {
+    color: #0c120c;
   }
 }
