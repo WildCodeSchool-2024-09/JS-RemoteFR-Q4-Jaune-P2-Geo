@@ -102,15 +102,15 @@ export default function Langages({ countries }: ThemeProps) {
   }
   return (
     <>
-      <div className="timer" style={{ color: timerColor }}>
-        {timer}
-      </div>
       <div className="conteneurTitleScore">
-        <img
+        <div className="timer" style={{ color: timerColor }}>
+          {timer}
+        </div>
+        {/* <img
           className="imgTheme"
           src={"/public/images/Langues.png"}
           alt="Un boutton nuage où se trouve un texte Capital"
-        />
+        /> */}
         <p className="score"> {score} / 10</p>
       </div>
 

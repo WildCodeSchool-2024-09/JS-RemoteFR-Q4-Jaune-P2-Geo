@@ -98,15 +98,15 @@ export default function Flags({ countries }: ThemeProps) {
   }
   return (
     <>
-      <div className="timer" style={{ color: timerColor }}>
-        {timer}
-      </div>
       <div className="conteneurTitleScore">
-        <img
+        <div className="timer" style={{ color: timerColor }}>
+          {timer}
+        </div>
+        {/* <img
           className="imgTheme"
           src={"/public/images/drapeaux.png"}
           alt="Un boutton nuage où se trouve un texte Drapeau"
-        />
+        /> */}
         <p className="score"> {score} / 10</p>
       </div>
 

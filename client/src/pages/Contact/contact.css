@@ -35,7 +35,7 @@ input {
   }
 
   & button:hover {
-    background-color: #7dcfb6;
+    background: var(--color-orange);
   }
 
   & button:active {

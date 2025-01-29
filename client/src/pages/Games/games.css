@@ -7,10 +7,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 6rem;
 
     & button {
       border: none;
       background: none;
+      padding-bottom: 3rem;
     }
   }
+}
+
+.home_theme > h1 {
+  font-size: 2rem;
 }

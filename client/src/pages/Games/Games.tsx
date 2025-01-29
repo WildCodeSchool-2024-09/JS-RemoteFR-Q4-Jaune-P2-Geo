@@ -48,7 +48,7 @@ export default function Games() {
     return (
       <>
         <div className="home_theme">
-          <h2>Choisie un thème !</h2>
+          <h1>Choisie un thème !</h1>
 
           <div className="containers-themes">
             <button type="button" value="capitals" onClick={changeMode}>
