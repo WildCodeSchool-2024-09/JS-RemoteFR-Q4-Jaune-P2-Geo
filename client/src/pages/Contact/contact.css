@@ -27,7 +27,6 @@ input {
     margin: 2rem 0;
     font-size: 1rem;
     color: rgb(22, 21, 21);
-    background-color: #007bff;
     border: 2px solid #333;
     border-radius: 0.5rem;
     cursor: pointer;
@@ -35,7 +34,7 @@ input {
   }
 
   & button:hover {
-    background-color: #0056b3;
+    background: var(--color-orange);
   }
 
   & button:active {

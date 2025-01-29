@@ -58,7 +58,7 @@ export default function Result({
       <div className="contenerResult">
         <div className="result">
           <h2>Tu obtiens une note de :</h2>
-          <p className="scoreFinal">{score}/10</p>
+          <p className="scoreFinal">{score}/10 </p>
           <p>{message}</p>
         </div>
 
