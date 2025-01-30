@@ -1,24 +1,124 @@
-.answers-container {
+/* titre (timer + score) */
+.conteneurTitleScore {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 0;
-  margin: 0;
+  margin: 0 1rem;
+}
+.timer {
+  font-size: 6rem;
+  padding-left: 5rem;
 }
 
-.answers-container button {
-  border-radius: 8px;
-  padding: 0.8rem;
-  border: none;
-  background: var(--color-orange);
-  font-family: "Love Ya Like A Sister", serif;
-}
-
-.goodAnswer {
+.score {
+  font-size: 0.8rem;
+  border: 8px solid var(--color-green);
+  background: white;
+  border-radius: 50%;
+  margin: auto;
+  padding: 1rem;
   text-align: center;
 }
 
+/* question */
+
+.conteneurTheme {
+  margin: 0 auto;
+  border: 1 solid white;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 80vw;
+  background: var(--color-BG-layout);
+  box-shadow: 0px 2px 2px rgb(82, 82, 82);
+
+  & button {
+    border: none;
+    background: var(--color-orange);
+    font-family: "Love Ya Like A Sister", serif;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+.conteneurTheme > h2 {
+  font-size: 1.4rem;
+  padding: 0.7rem;
+}
+
+.flags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1.6rem;
+  padding: 0.8rem;
+  & button {
+    border: none;
+  }
+}
+
+button .flags,
+.flagAnswer {
+  max-width: 23vw;
+  border-radius: 8px;
+}
+.answers-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* reponse */
+
+dialog {
+  background: var(--color-BG-layout);
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgb(82, 82, 82);
+  width: 80vw;
+  margin-top: 3rem;
+  justify-self: center;
+}
+
+dialog button {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 1.2rem;
+  font-family: "Love Ya Like A Sister", serif;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+dialog p {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.good {
+  border: 8px solid var(--color-green);
+
+  & button {
+    background: var(--color-green);
+    border: none;
+  }
+}
+
+.notGood {
+  border: 8px solid var(--color-orange);
+  & button {
+    background: var(--color-orange);
+  }
+}
+
+.flagAnswer {
+  display: block;
+  margin: 0 auto;
+}
+
+/* resultat */
 .result {
   display: flex;
   flex-direction: column;
@@ -39,14 +139,6 @@
   font-size: 1.4rem;
 }
 
-.contenerResult > .result {
-  padding: 1.5rem;
-}
-
-.contenerResult > .topScore {
-  padding: 1.5rem;
-}
-
 .scoreFinal {
   border: 8px solid var(--color-green);
   max-width: 20vw;
@@ -54,6 +146,16 @@
   background: white;
   border-radius: 50%;
   padding: 1rem;
+}
+
+.contenerResult > .topScore {
+  margin: 1rem auto;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 80vw;
+  text-align: center;
+  background: var(--color-BG-layout);
+  box-shadow: 0px 2px 2px rgb(82, 82, 82);
 }
 
 .buttonPlayAgain {
@@ -68,50 +170,27 @@
   background: var(--color-orange);
   box-shadow: 0px 2px 2px rgb(82, 82, 82);
 }
-.timer {
-  font-size: 6rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-
-  padding-left: 5rem;
-}
-
-.topScore {
-  margin: 2rem auto;
-  border-radius: 8px;
-  width: 80vw;
-  text-align: center;
-  background: var(--color-BG-layout);
-  box-shadow: 0px 2px 2px rgb(82, 82, 82);
-}
-
-h1 {
-  padding-top: 1rem;
-  margin: 0;
-}
-
-.imgTheme {
-  object-fit: contain;
-  max-width: 40%;
-}
-
-.score {
-  font-size: 0.8rem;
-}
-
-.conteneurTheme {
-  padding: 1rem;
-  margin-top: 1.5rem;
-}
-
-.conteneurTheme > h2 {
-  font-size: 1.4rem;
-  padding: 0.7rem;
-}
 
 @media (min-width: 768px) {
   .timer {
-    font-size: 12rem;
+    font-size: 8rem;
+  }
+  .conteneurTitleScore {
+    width: 60vw;
+    margin: 0 auto;
+  }
+  .imgTheme {
+    min-height: 10vh;
+    min-width: 35vw;
+    padding: 4rem;
+  }
+  button .flags {
+    max-width: 15vw;
+  }
+  .conteneurTheme {
+    width: 60vw;
+  }
+  dialog {
+    width: 60vw;
   }
 }

@@ -3,11 +3,11 @@
   padding-top: 4rem;
 
   & .containers-themes {
-    margin: 2rem 0;
+    margin: 1rem 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 6rem;
+    padding: 1rem;
 
     & button {
       border: none;

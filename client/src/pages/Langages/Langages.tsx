@@ -49,7 +49,7 @@ export default function Langages({ countries }: ThemeProps) {
 
       <div className="conteneurTheme">
         <h2>
-          {questionCount} - Quel est le langage du pays :
+          {questionCount} - Quel est le langage du pays :{" "}
           {countries[goodAnswer].name.common} ?
         </h2>
 
