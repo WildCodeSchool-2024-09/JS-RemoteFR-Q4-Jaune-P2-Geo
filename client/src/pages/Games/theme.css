@@ -38,6 +38,10 @@
   }
 }
 
+.flags-container button {
+  background: transparent;
+}
+
 .conteneurTheme > h2 {
   font-size: 1.4rem;
   padding: 0.7rem;
