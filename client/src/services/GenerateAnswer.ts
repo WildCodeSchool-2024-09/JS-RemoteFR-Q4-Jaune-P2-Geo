@@ -1,14 +1,28 @@
-// Fonction pour générer des indices de pays aléatoires UNIQUE (condition if)
-
 const generateAnswer = (countries: CountriesType[]): number[] => {
-  const arrayNbs: number[] = [];
-  while (arrayNbs.length < 3) {
-    const num = Math.floor(Math.random() * countries.length);
-    if (!arrayNbs.includes(num)) {
-      arrayNbs.push(num);
+  let randomAnswers: number[];
+
+  do {
+    randomAnswers = [];
+    while (randomAnswers.length < 3) {
+      const num = Math.floor(Math.random() * countries.length);
+      if (!randomAnswers.includes(num)) {
+        randomAnswers.push(num);
+      }
     }
-  }
-  return arrayNbs;
+  } while (
+    new Set(
+      randomAnswers.map((idx) =>
+        JSON.stringify(countries[idx]?.languages ?? []),
+      ),
+    ).size < 3 ||
+    new Set(
+      randomAnswers.map((idx) =>
+        JSON.stringify(countries[idx]?.currencies ?? []),
+      ),
+    ).size < 3
+  );
+
+  return randomAnswers;
 };
 
 export default generateAnswer;

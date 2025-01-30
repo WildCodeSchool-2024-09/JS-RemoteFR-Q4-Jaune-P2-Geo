@@ -7,7 +7,6 @@ interface CountriesType {
   };
   capital: string;
   languages: string;
-
   currencies: {
     [key: string]: {
       name: string;

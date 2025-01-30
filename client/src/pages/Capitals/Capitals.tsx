@@ -60,7 +60,7 @@ export default function Capitals({ countries }: ThemeProps) {
               type="button"
               onClick={() => handleChoiceAnswer(index)}
             >
-              {countries[index].capital}
+              {countries[index].capital[0]}
             </button>
           ))}
         </div>
