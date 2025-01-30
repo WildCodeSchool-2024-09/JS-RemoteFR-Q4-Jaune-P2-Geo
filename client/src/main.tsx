@@ -16,7 +16,6 @@ import Rules from "./pages/Rules/Rules";
 import "./App.css";
 import "./pages/Contact/contact.css";
 import "./pages/Home/home.css";
-import "./pages/Flags/flags.css";
 import "./pages/Games/games.css";
 import "./pages/Games/theme.css";
 

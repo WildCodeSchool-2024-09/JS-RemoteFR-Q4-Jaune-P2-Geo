@@ -29,5 +29,11 @@ body {
 h1 {
   text-align: center;
   font-size: 2.8rem;
-  padding: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: #0c120c;
 }

@@ -1,10 +1,7 @@
 nav {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  max-width: 100%;
 }
 
 nav > img {
@@ -12,17 +9,8 @@ nav > img {
 }
 
 nav > ul {
-  display: flex;
-  flex-direction: row;
   gap: 2rem;
   font-size: 1rem;
-  list-style: none;
-  padding-right: 2rem;
-}
-
-nav > ul > li > a {
-  color: white;
-  text-decoration: none;
 }
 
 nav > ul > li > a:hover {
@@ -61,12 +49,7 @@ nav > ul > li > a:hover {
   transform: rotate(90deg);
 }
 
-@media only screen and (min-width: 920px) {
-  nav {
-    max-width: 100%;
-    padding: 0;
-  }
-
+@media only screen and (min-width: 768px) {
   nav > ul {
     font-size: 1.5rem;
   }
@@ -81,15 +64,9 @@ nav > ul > li > a:hover {
 
   .menu-links {
     display: flex;
+    position: sticky;
     flex-direction: row;
-    gap: 10rem;
     background-color: transparent;
     box-shadow: none;
-    padding: 0;
-    margin-left: 55rem;
-  }
-
-  .menu-links > li > a {
-    color: #0c120c;
   }
 }
