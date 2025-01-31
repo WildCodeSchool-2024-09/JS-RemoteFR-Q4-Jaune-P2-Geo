@@ -22,8 +22,4 @@
   .rules_explain > p {
     font-size: 2rem;
   }
-
-  .rules_explain {
-    border: dashed 2px red;
-  }
 }

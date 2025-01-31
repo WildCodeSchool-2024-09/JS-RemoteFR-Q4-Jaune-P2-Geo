@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <div className="home">
         <h1>GEO QUIZ</h1>
-        <h2> Clique sur la planette !</h2>
+        <h2> Clique sur la planète !</h2>
         <Link to="/Games">
           <img
             src="/public/images/planetes.png"
