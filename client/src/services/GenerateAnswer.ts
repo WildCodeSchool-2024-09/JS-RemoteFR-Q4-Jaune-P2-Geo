@@ -5,7 +5,11 @@ const generateAnswer = (countries: CountriesType[]): number[] => {
     randomAnswers = [];
     while (randomAnswers.length < 3) {
       const num = Math.floor(Math.random() * countries.length);
-      if (!randomAnswers.includes(num)) {
+      if (
+        !randomAnswers.includes(num) &&
+        Array.isArray(countries[num]?.capital) &&
+        countries[num].capital.length > 0
+      ) {
         randomAnswers.push(num);
       }
     }
