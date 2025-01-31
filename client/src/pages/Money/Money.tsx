@@ -40,11 +40,7 @@ export default function Money({ countries }: ThemeProps) {
         <div className="timer" style={{ color: timerColor }}>
           {timer}
         </div>
-        {/* <img
-          className="imgTheme"
-          src={"/public/images/Monnaies.png"}
-          alt="Un boutton nuage où se trouve un texte Money"
-        /> */}
+
         <p className="score"> {score} / 10</p>
       </div>
 
@@ -65,7 +61,8 @@ export default function Money({ countries }: ThemeProps) {
             </button>
           ))}
         </div>
-
+      </div>
+      <div className="conteneurDialog">
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
           {timer > 0 && (
             <p>

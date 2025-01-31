@@ -59,7 +59,8 @@ export default function Capitals({ countries }: ThemeProps) {
             </button>
           ))}
         </div>
-
+      </div>
+      <div className="conteneurDialog">
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
           {timer > 0 && (
             <p> Réponse choisit : {countries[userChoiceIndex].capital[0]} </p>

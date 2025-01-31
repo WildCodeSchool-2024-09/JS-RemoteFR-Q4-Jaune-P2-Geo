@@ -72,7 +72,9 @@ button .flags,
 }
 
 /* reponse */
-
+.conteneurDialog {
+  height: 70vh;
+}
 dialog {
   background: var(--color-BG-layout);
   border-radius: 8px;

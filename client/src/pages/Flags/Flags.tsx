@@ -39,11 +39,7 @@ export default function Flags({ countries }: ThemeProps) {
         <div className="timer" style={{ color: timerColor }}>
           {timer}
         </div>
-        {/* <img
-          className="imgTheme"
-          src={"/public/images/drapeaux.png"}
-          alt="Un boutton nuage où se trouve un texte Drapeau"
-        /> */}
+
         <p className="score"> {score} / 10</p>
       </div>
 
@@ -69,7 +65,8 @@ export default function Flags({ countries }: ThemeProps) {
             </button>
           ))}
         </div>
-
+      </div>
+      <div className="conteneurDialog">
         <dialog className={isValidate ? "good" : "notGood"} open={dialogOpen}>
           {timer > 0 && (
             <p> Réponse choisit : {countries[userChoiceIndex].name.common} </p>
